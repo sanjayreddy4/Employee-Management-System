@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="sidebar">
+
+    <div class="sidebar">
+
+        <div class="brand">EM PANEL</div>
+
+            <a th:href="@{/employee/dashboard}"  th:classappend="${activePage=='dashboard'} ? 'active'">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
+
+
+            <a th:href="@{/employee/profile}"  th:classappend="${activePage=='profile'} ? ' active' : ''">
+                <i class="bi bi-person-circle"></i> My Profile
+            </a>
+
+
+            <a th:href="@{/employee/leaves}"  th:classappend="${activePage=='leaves'} ? 'active'">
+                <i class="bi bi-envelope-paper"></i> Leaves
+            </a>
+
+
+            <a th:href="@{/employee/salary}" th:classappend="${activePage=='salary'} ? 'active'">
+                <i class="bi bi-cash-coin"></i> Payroll
+            </a>
+
+
+            <a th:href="@{/employee/setting}"  th:classappend="${activePage=='setting'} ? 'active'">
+                <i class="bi bi-gear-fill"></i> Setting
+            </a>
+    </div>
+
+</div>
+
+
+</body>
+</html>

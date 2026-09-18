@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Employee</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="d-flex">
+
+    <!-- SIDEBAR -->
+    <div th:replace="fragments/admin-sidebar :: sidebar"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow-1">
+
+        <!-- HEADER -->
+        <div th:replace="fragments/header :: header"></div>
+
+        <div class="main-content">
+            <div class="container mt-5" style="max-width:700px">
+
+                <div class="card shadow p-4">
+                    <h4 class="text-center mb-4">Employee Details</h4>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <td th:text="${employee.name}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td th:text="${employee.email}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Department</th>
+                            <td th:text="${employee.department != null ? employee.department.name : 'Not Assigned'}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Designation</th>
+                            <td th:text="${employee.designation}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Salary</th>
+                            <td th:text="${employee.salary}"></td>
+                        </tr>
+                    </table>
+
+                    <div class="text-center mt-4">
+                        <a th:href="@{/admin/employees}" class="btn btn-secondary">
+                            Back to Employee List
+                        </a>
+
+                        <a th:href="@{/admin/employees/edit/{id}(id=${employee.id})}"
+                           class="btn btn-warning ms-2">
+                            Edit
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

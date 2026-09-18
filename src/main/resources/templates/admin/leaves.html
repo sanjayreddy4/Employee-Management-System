@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Leaves</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <!-- SIDEBAR -->
+    <div th:replace="~{fragments/admin-sidebar :: sidebar}"></div>
+
+    <!-- MAIN -->
+    <div class="flex-grow-1">
+
+        <!-- HEADER -->
+        <div th:replace="fragments/header :: header"></div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="container-fluid mt-4 px-5">
+
+                <h3 class="text-center fw-bold mb-4">Manage Leaves</h3>
+
+                <!-- SEARCH LEFT + FILTER RIGHT -->
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+
+                    <!-- SEARCH -->
+                    <form th:action="@{/admin/leaves}" method="get"
+                          class="d-flex align-items-center gap-2" style="max-width: 280px; width:100%;">
+                        <input type="text"
+                               name="keyword"
+                               class="form-control"
+                               placeholder="Search By Emp ID"
+                               th:value="${keyword}">
+<!--                        <button type="submit" class="btn btn-success px-3">-->
+<!--                            <i class="bi bi-search"></i>-->
+<!--                        </button>-->
+                    </form>
+
+                    <!-- FILTER BUTTONS -->
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a th:href="@{/admin/leaves(status='Pending')}"
+                           class="btn btn-sm btn-success px-3">
+                            Pending
+                        </a>
+
+                        <a th:href="@{/admin/leaves(status='Approved')}"
+                           class="btn btn-sm btn-dark px-3">
+                            Approved
+                        </a>
+
+                        <a th:href="@{/admin/leaves(status='Rejected')}"
+                           class="btn btn-sm btn-secondary px-3">
+                            Rejected
+                        </a>
+
+                        <a th:href="@{/admin/leaves}"
+                           class="btn btn-sm btn-outline-primary px-3">
+                            All
+                        </a>
+                    </div>
+
+                </div>
+
+                <!--  TABLE -->
+                <div class="card table-card p-3 shadow-sm">
+                    <table class="table align-middle mb-0">
+                        <thead class="text-white" style="background:#0aa57f;">
+                        <tr>
+                            <th>S No</th>
+                            <th>Emp ID</th>
+                            <th>Name</th>
+                            <th>Leave Type</th>
+                            <th>Department</th>
+                            <th>Days</th>
+                            <th>Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="l, stat : ${list}">
+                            <td th:text="${stat.count}"></td>
+
+                            <!-- LeaveRequest values -->
+                            <td th:text="${l.employee.id}"></td>
+                            <td th:text="${l.employee.name}"></td>
+
+                            <td th:text="${l.leaveType}"></td>
+
+                            <!-- Department (if department relation exists) -->
+                            <td th:text="${l.employee.department != null ? l.employee.department.name : 'N/A'}"></td>
+
+                            <!-- Days calculation -->
+                            <td th:text="${T(java.time.temporal.ChronoUnit).DAYS.between(l.fromDate, l.toDate) + 1}"></td>
+
+                            <!-- STATUS -->
+                            <td>
+                                <span th:text="${l.status}"
+                                      th:classappend="${l.status=='Approved'} ? 'badge bg-success' :
+                                                     (${l.status=='Rejected'} ? 'badge bg-danger' : 'badge bg-warning text-dark')">
+                                </span>
+                            </td>
+
+                            <!-- VIEW ACTION -->
+                            <td class="text-center">
+                                <a th:href="@{/admin/leaves/view/{id}(id=${l.id})}"
+                                   class="btn btn-success btn-sm px-4">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- EMPTY -->
+                        <tr th:if="${#lists.isEmpty(list)}">
+                            <td colspan="8" class="text-center text-danger fw-bold py-3">
+                                No Leaves Found
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <!--  PAGINATION -->
+                    <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+
+                        <a class="btn btn-outline-secondary"
+                           th:href="@{/admin/leaves(page=${currentPage - 1}, status=${status}, keyword=${keyword})}"
+                           th:classappend="${currentPage == 0} ? 'disabled'">
+                            ◀
+                        </a>
+
+                        <span class="page-indicator">
+                            Page <span th:text="${currentPage + 1}"></span>
+                            /
+                            <span th:text="${totalPages}"></span>
+                        </span>
+
+                        <a class="btn btn-outline-secondary"
+                           th:href="@{/admin/leaves(page=${currentPage + 1}, status=${status}, keyword=${keyword})}"
+                           th:classappend="${currentPage + 1 == totalPages} ? 'disabled'">
+                            ▶
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

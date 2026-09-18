@@ -1,0 +1,418 @@
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* =========================================================
+   ADMIN PANEL DESIGN  (Default)
+   - Works for Admin pages without body class
+   - Uses your existing .sidebar .topbar .main-content
+========================================================= */
+
+/*  SIDEBAR (ADMIN) */
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a0f2c, #020617);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Sidebar Brand */
+.sidebar .brand {
+    font-size: 22px;
+    font-weight: 800;
+    padding: 18px 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* remove bullets */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar li {
+    list-style: none;
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    color: #cbd5f5;
+    text-decoration: none;
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: 0.25s ease;
+}
+
+/* Icon style */
+.sidebar a i {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+/* Hover */
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* Active menu */
+.sidebar a.active {
+    background: #0aa57f;
+    color: #ffffff;
+    font-weight: 700;
+    border-left: 4px solid #ffffff;
+}
+
+/* TOPBAR HEADER */
+.topbar {
+    background: #0aa57f;
+    padding: 12px 30px;
+    margin-left: 240px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    position: fixed;
+    width: calc(100% - 240px);
+    top: 0;
+    z-index: 999;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 240px;
+    padding: 30px;
+    padding-top: 90px;
+    margin-top: 60px;
+    background: #f8fafc;
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
+}
+
+/* DASHBOARD CARDS */
+.card-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.card-box h4 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.card-box span {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ICON */
+.icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Table */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table-success th {
+    background-color: #10b981 !important;
+    color: white;
+    text-align: center;
+}
+
+.table th {
+    background-color: #10b981;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    border-color: #e5e7eb;
+}
+
+.table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9;
+    transition: 0.2s ease;
+}
+
+/* Buttons */
+.btn-sm {
+    margin: 2px;
+}
+
+.btn-purple {
+    background-color: #a855f7;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #9333ea;
+}
+
+/* Login card */
+/*.login-card {
+    background-color: #212529;
+    color: white;
+}*/
+
+
+.login-page {
+    background: linear-gradient(135deg, #0aa57f, #0f766e);
+    min-height: 100vh;
+}
+/* Form card */
+.login-card {
+    width: 360px;
+    padding: 30px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-right: 40px;   /* moves form toward center */
+}
+
+/* Image */
+.login-img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+}
+
+.login-wrapper {
+    min-height: 100vh;
+}
+
+
+/* Center text nicely */
+.login-right .text-center {
+    max-width: 500px;
+}
+
+.right-content {
+    max-width: 500px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+
+/*.btn-login {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background-color: #0b5ed7;
+}*/
+
+.btn-login {
+    background-color: #0aa57f;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: #087f63;
+
+
+/* Image container to cut image */
+.img-container {
+    width: 450px;
+    height: 350px;
+    overflow: hidden;        /* cuts extra part */
+    margin: auto;
+}
+
+/* Image style */
+.login-img {
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    object-fit: cover;       /* crop like designer */
+    object-position: center; /* focus center */
+    border-radius: 20px;     /* optional rounded */
+}
+
+
+
+
+/* Slide animation */
+.slider-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+#employeeTable {
+    animation: slideIn 0.4s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.page-indicator {
+    font-size: 13px;
+    padding: 4px 10px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #334155;
+}
+
+
+/* logout button */
+.logout-btn {
+    background: white;
+    color: #00a896;
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background: #f1f1f1;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.content {
+    padding: 25px;
+    background: #f5f7fa;
+    flex: 1;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+.welcome-card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    background: white;
+    padding: 15px;
+    max-width: 620px; /* ✅ same like screenshot */
+}
+
+.icon-box {
+    height: 55px;
+    width: 55px;
+    border-radius: 10px;
+    background: #00a896;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+}
+
+/* stats cards */
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.stat-card h6 {
+    color: gray;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    font-weight: bold;
+}
+
+/* =========================
+   TABLE DESIGN
+========================= */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.table th {
+    background-color: #10b981;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    border-color: #e5e7eb;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9;
+    transition: 0.2s ease;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-sm {
+    margin: 2px;
+}
+
+.btn-purple {
+    background-color: #a855f7;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #9333ea;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="sidebar">
+
+    <div class="sidebar">
+
+        <div class="brand">HR PANEL</div>
+
+        <a th:href="@{/admin/dashboard}" th:classappend="${activePage=='dashboard'} ? 'active'">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+
+        <a th:href="@{/admin/employees}" th:classappend="${activePage=='employees'} ? 'active'">
+            <i class="bi bi-people-fill"></i> Employees
+        </a>
+
+        <a th:href="@{/admin/departments}" th:classappend="${activePage=='departments'} ? 'active'">
+            <i class="bi bi-building"></i> Departments
+        </a>
+
+<!--        <a th:href="@{/admin/attendance}" th:classappend="${activePage=='attendance'} ? 'active'">-->
+<!--            <i class="bi bi-calendar-check"></i> Attendance-->
+<!--        </a>-->
+
+        <a th:href="@{/admin/leaves}" th:classappend="${activePage=='leaves'} ? 'active'">
+            <i class="bi bi-envelope-paper"></i> Leaves
+        </a>
+
+        <a th:href="@{/admin/salary}" th:classappend="${activePage=='salary'} ? 'active'">
+            <i class="bi bi-cash-coin"></i> Payroll
+        </a>
+
+        <a th:href="@{/admin/setting}" th:classappend="${activePage=='setting'} ? 'active'">
+            <i class="bi bi-gear-fill"></i> Setting
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
