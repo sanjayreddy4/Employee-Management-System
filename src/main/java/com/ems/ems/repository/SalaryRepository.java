@@ -4,9 +4,10 @@ import com.ems.ems.entity.Salary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import java.util.List;
-
+import java.time.LocalDate;
 public interface SalaryRepository extends JpaRepository<Salary, Long> {
 
     List<Salary> findByEmpCodeContainingIgnoreCaseOrEmpNameContainingIgnoreCase(String empCode, String empName);
@@ -26,6 +27,11 @@ public interface SalaryRepository extends JpaRepository<Salary, Long> {
 
     List<Salary> findByEmpId(Long empId);
 
-
+    @Query("SELECT COALESCE(SUM(s.totalSalary), 0) FROM Salary s " +
+    	       "WHERE s.payDate >= :startDate AND s.payDate < :endDate")
+    	double getMonthlyPay(
+    	        @Param("startDate") LocalDate startDate,
+    	        @Param("endDate") LocalDate endDate
+    	);
 }
 

@@ -19,6 +19,8 @@ public interface SalaryService {
 
     long countSalary();
 
+    double getMonthlyPay();
+    
     long countSalaryByEmpId(Long empId);
 
     Page<Salary> getSalaryByEmpId(Long empId, int page, int size);

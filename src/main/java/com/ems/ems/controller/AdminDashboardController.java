@@ -1,3 +1,5 @@
+
+
 package com.ems.ems.controller;
 
 import com.ems.ems.service.*;
@@ -32,7 +34,10 @@ public class AdminDashboardController {
         long totalEmployees = employeeService.getAllEmployees().size();
         long totalDepartments = departmentService.getAllDepartments().size();
 
-        //  LEAVE COUNTS
+        // MONTHLY PAY
+        double monthlyPay = salaryService.getMonthlyPay();
+
+        // LEAVE COUNTS
         long leaveApplied = leaveRequestService.countAllLeaves();
         long leavePending = leaveRequestService.countLeavesByStatus("Pending");
         long leaveApproved = leaveRequestService.countLeavesByStatus("Approved");
@@ -40,6 +45,7 @@ public class AdminDashboardController {
 
         model.addAttribute("totalEmployees", totalEmployees);
         model.addAttribute("totalDepartments", totalDepartments);
+        model.addAttribute("monthlyPay", monthlyPay);
 
         model.addAttribute("leaveApplied", leaveApplied);
         model.addAttribute("leavePending", leavePending);

@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.time.LocalDate;
 @Service
 public class SalaryServiceImpl implements SalaryService {
 
@@ -91,5 +91,16 @@ public class SalaryServiceImpl implements SalaryService {
         return repo.findByEmpNameContainingIgnoreCase(keyword, PageRequest.of(page, size));
     }
 
+    @Override
+    public double getMonthlyPay() {
+
+        LocalDate today = LocalDate.now();
+
+        LocalDate startDate = today.withDayOfMonth(1);
+
+        LocalDate endDate = startDate.plusMonths(1);
+
+        return repo.getMonthlyPay(startDate, endDate);
+    }
 
 }
